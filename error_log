@@ -1,0 +1,6 @@
+[04-Nov-2013 17:07:23] PHP Fatal error:  Call to a member function userdata() on a non-object in /home2/adam1/public_html/madserv.us/application/controllers/api.php on line 8
+[04-Nov-2013 17:10:47] PHP Fatal error:  Call to a member function userdata() on a non-object in /home2/adam1/public_html/madserv.us/application/controllers/api.php on line 8
+[04-Nov-2013 21:03:23] PHP Fatal error:  Class 'Auth_client' not found in /home2/adam1/public_html/madserv.us/system/core/Loader.php on line 303
+[07-Nov-2013 18:10:50] PHP Parse error:  syntax error, unexpected ';' in /home2/adam1/public_html/madserv.us/application/controllers/action_login.php on line 13
+[07-Nov-2013 18:11:19] PHP Fatal error:  Call to a member function set_rules() on a non-object in /home2/adam1/public_html/madserv.us/application/controllers/action_login.php on line 12
+[09-Nov-2013 17:21:21] PHP Fatal error:  Call to undefined method Validation::validateClient() in /home2/adam1/public_html/madserv.us/application/controllers/action_client_registration.php on line 17

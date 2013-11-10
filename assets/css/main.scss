@@ -1,0 +1,618 @@
+/* 	Copyright Adam Gedney 11/1/13
+	contact: adam.gedney@gmail.com
+	http://adamgedney.com
+
+"Good UI design is humble.” – Jono DiCarlo
+*/
+
+/*------------------------SASS---------------------------*/
+
+$white: #F5F5F5;
+$bg2: #e5e5e5;
+$tab-white: #F4F4F2;
+$light-gray: #c4c4c4;
+$text-gray: #6e6e6e;
+$dark-gray: #252525;
+$turquoise: #00556d;
+$blue: #5D95BA;
+$gray-blue: #AAC6D8;
+$light-blue: #a2c1d5;
+$dark-blue: #08298A;
+$button-white: #fbf7f8;
+$red: #d93330;
+
+@mixin duration($time: .7s){
+		transition-duration: $time;
+-webkit-transition-duration: $time;
+}
+
+/*Google Fonts*/
+
+// 'Roboto Slab', "Helvetica Neue Light", Helvetica, Arial, sans-serif;
+// 'Roboto', "Helvetica Neue Light", Helvetica, Arial, sans-serif;
+
+/*--------------------------------------Start CSS Reset---------------------------------------------*/
+
+/* http://meyerweb.com/eric/tools/css/reset/
+v2.0 | 20110126
+License: none (public domain)
+*/
+
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, cite, code,del, em, img, strike, strong, sub, sup, tt, var,b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+display: block;
+}
+
+ul {
+list-style: none;
+}
+
+
+
+
+
+
+
+/*--------------------------------------End CSS Reset / Start General-------------------------------*/
+
+
+body{
+background: url(/assets/img/whtcrdbd.jpg) $white;
+color: $text-gray;
+font-size: 62.5%;
+font-family: 'Roboto', "Helvetica Neue Light", Helvetica, Arial, sans-serif;
+}
+
+h1,h2,h3,h4{
+	font-family: 'Roboto Slab', "Helvetica Neue Light", Helvetica, Arial, sans-serif;
+}
+
+h1{
+font-size: 6.9em;
+line-height: 1.1em;
+}
+
+h2{
+font-size: 2.1em;
+line-height: 1.14em;
+}
+
+h3{
+font-size: 1.6em;
+line-height: 1.8em;
+}
+
+p, ul, dl, xmp, li{
+font-size: 1.8em;
+font-weight: 300;
+line-height: 1.7;
+margin-bottom: 20px;
+}
+
+ol[type="i"] li, .tos ul li{
+	font-size: 1em;
+}
+
+ul{
+line-height: 1.3em;
+}
+
+a{
+text-decoration: none;
+color: $blue;
+outline: none;
+}
+
+a:visited{
+	outline: none;
+}
+
+a:hover{
+	opacity: .5;
+	@include duration;
+}
+
+input{
+	font-family: 'Roboto', "Helvetica Neue Light", Helvetica, Arial, sans-serif;
+}
+
+
+/*--------------------------------------End General / Start Objects------------------------------------*/
+
+.bold{
+	font-weight: 400;
+}
+
+.blue{
+	color: $blue;
+}
+
+.light-blue{
+	color: $light-blue;
+}
+
+.red{
+	color: $red;
+}
+
+.hide-text {
+  text-indent: 200%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.submit-button{
+	width: 85px;
+	height: 30px;
+	background: $turquoise;
+	border: none;
+	color: $button-white;
+	text-transform: uppercase;
+	@include duration;
+}
+
+.submit-button:hover{
+	opacity: .5;
+	@include duration;
+}
+
+.login-form a:hover{
+	opacity: .5;
+	@include duration;
+}
+
+.small{
+	font-size: .6em
+}
+
+.big-date{
+	font-size: 1.4em
+}
+
+.logout-username{
+	color: #008eb6;
+}
+
+/*--------------------------------------End Objects / Landing page------------------------------------*/
+
+header{
+	height: 54px;
+	background: $blue;
+	overflow: hidden;
+	position: fixed;
+	padding-top: 5px;
+	top: 0;
+	left: 0;
+	right: 0;
+	opacity: .9;
+}
+
+header.logged-in{
+	position: static;
+}
+
+.header-inner{
+	width: 1140px;
+	margin: 0 auto;
+	overflow: hidden;
+
+	.logo-small{
+		float: left;
+	}
+
+	nav{
+		float: left;
+		ul{
+			li{
+				margin-left: 18px;
+				margin-bottom: 0;
+				line-height: 44px;
+				display: inline-block;
+
+				a{
+					color: $white;
+					font-size: .5em;
+					font-weight: 100;
+					vertical-align: middle;
+
+				}
+				a:hover{
+					background: $gray-blue;
+					padding: 6px;
+					border-radius: 5px;
+				}
+			}
+		}
+	}
+}
+
+.keep-me{
+	font-size: .7em;
+	color: $white;
+	float: left;
+	padding-top: 3px;
+	margin-right: 9px;
+
+	p{
+		display: inline;
+	}
+
+	input[type=checkbox]{
+		width: 15px;
+		height: 15px;
+	}
+}
+
+.header-greeting{
+	display: inline-block;
+	width: 225px;
+	margin-bottom: 0;
+	line-height: 1em;
+	padding-top: 12px;
+	padding-right: 9px;
+	text-align: right;
+	float: right;
+	color: $white;
+}
+
+.login-form{
+	float: right;
+	margin: 4px 0 0;
+	overflow: hidden;
+	height: 54px;
+
+	a{
+		display: block;
+		width: 82px;
+		float: right;
+		text-decoration: underline;
+		@include duration;
+	}
+
+	#login-error{
+		margin: -1px 0 0 142px;
+	}
+}
+
+#forgot-pass{
+	color: $white;
+	padding: 0 3px 3px;
+	font-size: .9em;
+	width: 85px;
+}
+
+.login-form input[type=text], .login-form input[type=password], .signup input[type=text], .signup input[type=password]{
+	font-size: 1.6em;
+	width: 150px;
+	height: 30px;
+	border: none;
+	border: 1px solid #75758E;
+	border-radius: 2px;
+	padding-left: 5px;
+	/*text-transform: uppercase;*/
+}
+
+
+.error{
+	font-size: 1em;
+	color: $red;
+	position: absolute;
+	opacity: 0;
+	margin-top: -13px;
+	font-size: .9em;
+	@include duration;
+}
+
+
+#error-message{
+	margin-top: 87px;
+	margin-left: 86px;
+}
+
+.wrapper{
+	width: 1140px;
+	margin: 54px auto 0;
+	overflow: hidden;
+	
+	h2,h3{
+		margin-bottom: 9px;
+	}
+}
+
+.tos{
+	margin-top: 148px;
+	width: 906px;
+}
+
+.landing-logo{
+	width: 800px;
+	height: 350px;
+	margin: 0 auto 36px;
+	clear: both;
+}
+
+.landing-content-wrapper{
+	width: 960px;
+	margin: 0 auto 63px;
+	min-height: 500px;
+}
+
+.landing-copy, .signup{
+	color: $dark-gray;
+	width: 440px;
+	float: left;
+}
+
+.signup{
+	width: 350px;
+	overflow: hidden;
+	float: right;
+
+	input{
+		display: block;
+		margin-bottom: 12px;
+	}
+
+	input[type=text], input[type=password]{
+		width: 300px;
+		height: 45px;
+	}
+
+	.submit-button{
+		float: left;
+		width: 300px;
+		height: 45px;
+		margin-top: 9px;
+	}
+}
+
+#signup-error-message{
+	position: static;
+}
+
+
+/*-------------------------------------------------API Page----------------------------------------*/
+
+.instructions{
+	width: 666px;
+	margin: 72px 18px 0 0;
+	float: left;
+	
+	h2, h3{
+		color: $dark-gray;
+	}
+}
+
+.client-signup{
+	margin-top: 72px;
+}
+
+.api-dl-link{
+	display: block;
+	text-decoration: underline;
+	width: 190px;
+	margin: 0 auto 36px;
+	font-size: 1.8em;
+}
+
+.button-demo{
+	display: block;
+	text-align: center;
+	margin: 36px 0;
+}
+
+
+
+/*-------------------------------------------------ADMIN PAGES----------------------------------------*/
+
+
+.cms{
+	min-height: 800px;
+	margin-top: 72px;
+
+	h1{
+		font-size: 2.7em;
+		font-weight: 100;
+		color: $blue;
+		text-align: center;
+	}
+}
+
+
+.options{
+	overflow: hidden;
+	// border-bottom: 1px solid $text-gray;
+	margin-top: 36px;
+
+	nav{
+		float: left;
+		ul{
+			margin: 0;
+			li{
+				display: inline-block;
+				// padding-right: 18px;
+				margin: 0;
+				line-height: .8em;
+			}
+		}
+	}
+
+	a{
+		font-size: .6em;
+		line-height: 1.7em;
+		color: $text-gray;
+		display: block;
+		width: 100px;
+		height: 33px;
+		text-align: center;
+		border-top-left-radius: 5px;
+		border-top-right-radius: 5px;
+		border-top: 1px solid $light-gray;
+		border-left: 1px solid $light-gray;
+		border-right: 1px solid $light-gray;
+	}
+
+	a.selected{
+		display: block;
+		color: $dark-gray;
+		background: $tab-white;
+		border: 1px solid $text-gray;
+		border-top-left-radius: 5px;
+		border-top-right-radius: 5px;
+		border-bottom: $white;
+		position: relative;
+		z-index: 100;
+	}
+
+	a.settings-icon{
+		display: inline-block;
+		float: right;
+		font-size: 1.8em;
+		font-weight: 100;
+		width: 200px;
+		border: none;
+	}
+}
+
+.content-body{
+	background: $tab-white;
+	margin-top: -1px;//creates the tabbed effect
+	padding: 9px 0;
+	// min-height: 594px;
+	border: 1px solid $text-gray;
+	border-top-right-radius: 5px;
+	position: relative;
+	z-index: 0;
+	overflow: hidden;
+}
+
+
+/*---------------------ADMIN USERS/CLIENTS--------------------------*/
+
+
+
+.user-header, .user-block{
+	margin-top: 36px;
+	padding: 3px 9px;
+	border-bottom: 1px solid $text-gray;
+	// position: relative;
+	// z-index: 300;
+
+	p{
+		display: inline-block;
+		color: $red;
+		font-size: 1.6em;
+		line-height: 1em;
+		font-weight: 400;
+		margin-bottom: 0;
+		margin-top: 6px;
+		width: 175px;
+	}
+}
+
+.user-block{
+	border-bottom: 1px solid $text-gray;
+	margin: 0;
+
+	p{
+		color: $text-gray;
+		font-weight: 100;
+	}
+
+	input[type=checkbox]{
+		width: 18px;
+		height: 18px;
+	}
+
+	input[type=submit]{
+		width: 72px;
+		height: 27px;
+		line-height: 18px;
+		font-weight: 100;
+		background: $turquoise;
+		color: $white;
+		border: none;
+		padding-bottom: 2px;
+		margin-left: 72px;
+	}
+
+	form{
+		display: inline-block;
+	}
+}
+
+
+
+.admin-update-form{
+	float: left;
+	margin: 72px 0 72px 108px;
+}
+
+
+.user-delete{
+	width: 200px;
+	margin: 468px 9px 0 0;
+
+	input[type=password], input[type=submit]{
+		width: 200px;
+		height: 35px;
+	}
+
+	input[type=submit]{
+		background: $red;
+	}
+
+	img{
+		padding-right: 9px;
+	}
+}
+
+.forgot-form{
+	float: none;
+	width: 350px;
+	margin: 0 auto;
+
+	input[type=text]{
+		width: 250px;
+	}
+}
+
+.forgot-copy{
+	float: none;
+	width: 350px;
+	margin: 180px auto 0;
+}
+
+.reset-form{
+	height: 300px;
+	input[type=password], input[type=submit]{
+		display: block;
+		margin-bottom: 9px;
+		width: 250px;
+	}
+}
+
+footer {
+	border-top: 1px solid $text-gray;
+	height: 54px;
+	margin-top: 72px;
+	
+	p{
+		color: $dark-gray;
+		font-size: 1.4em;
+		width: 250px;
+		margin: 18px auto 0;
+	}
+}
+
+
