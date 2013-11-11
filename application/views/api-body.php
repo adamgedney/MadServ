@@ -7,7 +7,7 @@
 						<input id="new-client-name" type="text" name="name" placeholder="Full Name or Company"/>
 						<p id="signup-error-name" class="error"></p>
 						
-						<input id="new-client-url" type="text" name="url" placeholder="Website URL"/>
+						<input id="new-client-url" type="text" name="url" placeholder="http://yourwebsite.com"/>
 						<p id="signup-error-url" class="error"></p>
 						
 						<input id="new-client-email" type="text" name="email" placeholder="Contact Email"/>
@@ -51,7 +51,7 @@
 				<p><span class="bold">Once your app authenticates the API,</span> it will redirect your user to a login page on our servers. Your user will log in to the account he has previously made with our service. When the user has been authenticated by our service, we will return the user to the redirect address you provided. Attached to this redirect is some basic encrypted data about the user. You will be receiving the user's first name, username, and email address. The user has agreed to allow affiliated client web apps like yours to use these identifications on their website as the site sees fit. These data variables are located in the user_data function inside the decryption-controller.php file you download with the .zip.</p>
 				
 				<p>All that magic happens behind the scenes though. You may have been sweating a bit, but don't worry, I just thought it would be good to explain what is happening when your user clicks that "Login with" button.</p>
-				<p><span class="bold">Next up is that scary user_data function.</span> In the controller that you built to handle this API's requests (the one you likely specified as a segment in your redirect url), you need to paste the user_data function. We have appended the user_data segment onto the redirect url you provided us. When we call back to your web app after authenticating the user, this function will run. The user_data function was written primarily to decrypt the encrypted data coming back to your web app, and provide you will a few variables containing basic user data. At the start of the user_data function, you will have to replace the placeholder $app_id value with your App ID. You will not be able to decrypt data without this. The encryption/decryption key is unique to you and you alone.</p>
+				<p><span class="bold">Next up is that scary api.php file.</span> Api.ph is a controller file. In it, you will find an example of how to handle the API callbacks. In our tests, we used simple $_GET[] variables to catch the incoming data. Line 34 (if(isset($_GET['en'])){) is required to catch and decode the encrypted response from the API. When we call back to your web app after authenticating the user, this script will run. The section was written primarily to decrypt the encrypted data coming back to your web app, and provide you will a few variables containing basic user data. At the start of the script, you will have to replace the placeholder $app_id value with your App ID. You will not be able to decrypt data without this. The encryption/decryption key is unique to you and you alone.</p>
 				<xmp>
 				
 				</xmp>

@@ -19,53 +19,25 @@ class Api_Request extends CI_Controller {
 
 	//gets app key from database for authentication
 	$this->load->model('auth_client');
-	$dbKey= $this->auth_client->getKey($app_id);
+	$dbKey = $this->auth_client->getKey($app_id);
 
-	$makeSecret = md5($key);
+	$makeSecret = md5($dbKey);
 	$makeSecret .= md5($app_id);
 
-	if($dbKey){
-		
-		//-------ENCRYPTION--------
-			# the key should be random binary, use scrypt, bcrypt or PBKDF2 to
-		    # convert a string into a key
-		    # key is specified using hexadecimal
-		    $enckey = pack('H*', $key);
-		    
-		    # show key size use either 16, 24 or 32 byte keys for AES-128, 192
-		    # and 256 respectively
-		    $key_size =  strlen($enckey);
+// var_dump($dbKey);
 
-		    # create a random IV to use with CBC encoding
-		    $iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC);
-		    $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
-
-			//encryption of user data
-			//ecrypted using the $app_id as a key
-			$ciphertext = mcrypt_encrypt(MCRYPT_RIJNDAEL_128, $key,$makeSecret, MCRYPT_MODE_CBC, $iv);
-			
-			// prepend the IV for it to be available for decryption
-   			$ciphertext = $iv . $ciphertext;
-
-   			# encode the resulting cipher text so it can be represented by a string
-    		$c64 = base64_encode($ciphertext);
-    	//-------END ENCRYPTION--------
 
     	$response = array(
-			"secret"=>$c64,
-			"redirect"=>'/api_request/user_login_request'
-			);
+			"secret"=>$makeSecret,
+			"redirect"=>'http://madserv.us/api_request/user_login_request'
+		);
 
 
 		$encoded = json_encode($response);
 
 
-		header('Content-type: application/json');
+		// header('Content-type: application/json');
 		exit($encoded);
-
-	}else{
-		echo 'failure';
-	}
 
 	}// /validate_app
 
@@ -81,12 +53,16 @@ class Api_Request extends CI_Controller {
 		
 		//build array to pass into login form for transfer into
 		//user_auth_function
-		$data['data'] = array(
-			'id'=>$response['appId'],
-			'redirect'=>$redirect_url
-			);
+		// $data['data'] = array(
+		// 	'id'=>$response[0]->appId,
+		// 	'redirect'=>$redirect_to
+		// 	);
 
-		if($app_id == $response['appId']){
+		$data['data'] ="?cid=" . $response[0]->appId . "&redirect=" . $redirect_to;
+			
+
+// var_dump($data);
+		if($app_id == $response[0]->appId){
 			$this->load->view('header');
 			$this->load->view('user-login-body', $data);
 			$this->load->view('footer');
@@ -99,11 +75,16 @@ class Api_Request extends CI_Controller {
 	//User login authentication
 	//occurs after user submits login form
 	//result is redirect to client
-	function user_login_auth($data){
+	function user_login_auth(){
+
+		//************************Check cookie. If user already logged in, then bypass login and
+		//redirect right back to client with user data
+
+		//if(isset($this->input->cookie('keepme'))){}
 
 		//take apart data array
-		$app_id = $data['id'];
-		$redirect_to = $data['redirect'];
+		$app_id = $_GET['cid'];
+		$redirect_to = $_GET['redirect'];
 
 		//user credentials form data
 		$un = $_POST['username'];
@@ -134,7 +115,7 @@ class Api_Request extends CI_Controller {
 		
 		//if user is authenticated, prepare redirect to client
 		if($query){
-			$un = $query['username'];
+			$usn = $query['username'];
 			$fn = $query['first'];
 			$em = $query['email'];
 
@@ -148,7 +129,7 @@ class Api_Request extends CI_Controller {
 			$redirectURL = $redirect_to;
 
 			//outputs data in jsn string format for decoding by client
-			$userdata = "/?en=username," . $un;
+			$userdata = "/?en=username," . $usn;
 			$userdata .= ",first-name," . $fn;
 			$userdata .= ",email," . $em;
 
@@ -180,7 +161,7 @@ class Api_Request extends CI_Controller {
 			$redirectURL .= "/?en=" . $c64;
 
 			//redirect back to client with appended encrypted data
-			header("Location: " . $redirectURL);
+			header("Location: http://" . $redirectURL);
 		}
 	}// /user_login_auth
 

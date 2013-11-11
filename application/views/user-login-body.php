@@ -1,9 +1,9 @@
 		<div class="wrapper">
 			<div class="landing-content-wrapper">
 				<div class="landing-copy forgot-copy">
-					<h2>Forgot your password?</h2>
+					<h2>Sign in with MadServ</h2>
 					
-					<p>Enter your username and click submit. We will send an email to the email address you signed up with. You will then be directed to click a link in the email that will take you reset your password.</p> 
+					<p>Enter your username and password, then click submit. Your info is always secure with MadServ.</p> 
 				</div><!-- /.landing-copy -->
 			
 				<div class="login-form forgot-form">

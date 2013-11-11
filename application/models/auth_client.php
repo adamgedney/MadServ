@@ -28,8 +28,9 @@ ORDER BY request_time DESC");
 
     	$this->db->where('appId',$appId);
     	$this->db->select('key');
-		$query = $this->db->get('clients');
-		return $query->row_array();
+		$query = $this->db->get('clients')->result();
+		$result = $query[0]->key;
+		return $result;
 
 	}// /getUser
 
