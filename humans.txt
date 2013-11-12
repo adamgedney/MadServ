@@ -2,7 +2,7 @@
                         
 
     /* TEAM */
-    Your title: Adam Shields Gedney.
+    Your title: Adam Shields Gedney & Joe Cavagna.
     Site: http://adamshields.com  |  adam.gedney@gmail.com
     Twitter: @adamshields
     Location: Winter Park, FL  USA
@@ -19,8 +19,8 @@
                         
 
     /* SITE */
-    Last update: 03/31/2013
-    Standards: HTML5, CSS3,..
+    Last update: 11/1/2013
+    Standards: HTML5, CSS3, JS, JQuery, PHP, CodeIgniter Framework..
     Software: GitHub, Sublime Text 2, Fetch
 
 
