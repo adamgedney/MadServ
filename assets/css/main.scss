@@ -580,10 +580,12 @@ header.logged-in{
 .forgot-form{
 	float: none;
 	width: 350px;
+	height: 200px;
 	margin: 0 auto;
 
-	input[type=text]{
+	input[type=text], input[type=password], input[type=submit]{
 		width: 250px;
+		margin-bottom: 9px;
 	}
 }
 

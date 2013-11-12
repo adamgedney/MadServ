@@ -72,7 +72,10 @@ class Action_forgot_password extends CI_Controller {
 
 			$pw = md5($pass);
 
+			//sets status to active in case user is coming from a lockout
 			$data = array(
+				'userstatus'=>"active",
+				'userblocked'=>"",
 				'password'=>$pw
 				);
 

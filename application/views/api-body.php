@@ -52,6 +52,12 @@
 				
 				<p>All that magic happens behind the scenes though. You may have been sweating a bit, but don't worry, I just thought it would be good to explain what is happening when your user clicks that "Login with" button.</p>
 				<p><span class="bold">Next up is that scary api.php file.</span> Api.ph is a controller file. In it, you will find an example of how to handle the API callbacks. In our tests, we used simple $_GET[] variables to catch the incoming data. Line 34 (if(isset($_GET['en'])){) is required to catch and decode the encrypted response from the API. When we call back to your web app after authenticating the user, this script will run. The section was written primarily to decrypt the encrypted data coming back to your web app, and provide you will a few variables containing basic user data. At the start of the script, you will have to replace the placeholder $app_id value with your App ID. You will not be able to decrypt data without this. The encryption/decryption key is unique to you and you alone.</p>
+				
+				<h3>Advertisement Delivery</h3>
+				<p>When you become an affiliate, you too can earn money through your website with our easy advertisement delivery system. It is lightweight targetted ads that require no plugins or bandwidth from your site. All you do is add your application id to the end of the source command like so:</p>
+				<p><code>&lt;img src='http://madserv.us/adserv/postpic/123exampleId' /&gt;</code></p>
+				<p>Just slide that piece of code where you want your ads delivered to on your site and you're done!</p>
+
 				<xmp>
 				
 				</xmp>

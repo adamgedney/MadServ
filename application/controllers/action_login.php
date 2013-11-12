@@ -90,9 +90,42 @@ class Action_login extends CI_Controller{
 			}// /if $valid
 		}else{
 
+			//fraudulent attempt logging
+			//user has 10 attempts to log in, else their status 
+			//is "lockout", and they'll no longer have 
+			//access to site. 
+	
+			//set initial data
+			$ses_count = $this->session->userdata('count');
+
+				if($ses_count < 5){
+
+					$counter = $ses_count + 1;
+					$this->session->set_userdata('count', $counter);
+
+					header('Location: /');
+
+				}else{
+
+					//handles lockout of user if failed attempts exceed 10
+					//if user does not exist, then there will be a database error
+					// $data = array(
+					// 	'userstatus'=>"lockout",
+					// 	'userblocked'=>'checked="checked"'
+					// 	);
+
+					// $this->load->model('auth_user');
+					// $this->auth_user->updateUser($username, $data);
+
+					//sends user to forgot password screen
+					$this->load->view('header');
+					$this->load->view('forgot-password');
+					$this->load->view('footer');
+				}// /ses_count < 5
+
 			$this->session->set_userdata('loggedin','0');
 
-			header('Location: /');
+			
 		}// /if $success
 	}// /index
 
