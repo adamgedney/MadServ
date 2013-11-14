@@ -128,37 +128,16 @@ class Api_Request extends CI_Controller {
 			//to send user upon auth
 			$redirectURL = $redirect_to;
 
-			//outputs data in jsn string format for decoding by client
-			$userdata = "/?en=username," . $usn;
-			$userdata .= ",first-name," . $fn;
-			$userdata .= ",email," . $em;
+			//outputs data in json string format for decoding by client
+			$userdata = $usn;
+			$userdata .= "," . $fn;
+			$userdata .= "," . $em;
 
 			//-------ENCRYPTION--------
-			# the key should be random binary, use scrypt, bcrypt or PBKDF2 to
-		    # convert a string into a key
-		    # key is specified using hexadecimal
-		    $key = pack('H*', $app_id);
-		    
-		    # show key size use either 16, 24 or 32 byte keys for AES-128, 192
-		    # and 256 respectively
-		    $key_size =  strlen($key);
-
-		    # create a random IV to use with CBC encoding
-		    $iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC);
-		    $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
-
-			//encryption of user data
-			//ecrypted using the $app_id as a key
-			$ciphertext = mcrypt_encrypt(MCRYPT_RIJNDAEL_128, $app_id,$userdata, MCRYPT_MODE_CBC, $iv);
-			
-			// prepend the IV for it to be available for decryption
-   			$ciphertext = $iv . $ciphertext;
-
-   			# encode the resulting cipher text so it can be represented by a string
-    		$c64 = base64_encode($ciphertext);
+			$encrypted = rawurlencode(base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5($app_id), $userdata, MCRYPT_MODE_CBC, md5(md5($app_id)))));
 
    			//add userdata to redirect
-			$redirectURL .= "/?en=" . $c64;
+			$redirectURL .= "/?en=" . $encrypted;
 
 			//redirect back to client with appended encrypted data
 			header("Location: http://" . $redirectURL);

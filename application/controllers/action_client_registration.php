@@ -7,6 +7,7 @@ class Action_client_registration extends CI_Controller {
 		$company = $_POST['name'];
 		$url = $_POST['url'];
 		$email = $_POST['email'];
+		$keyword = $_POST['keyword'];
 		$password = $_POST['password'];
 		$passwordAgain = $_POST['password-again'];
 
@@ -39,7 +40,8 @@ class Action_client_registration extends CI_Controller {
 					"appId"=>$app_id,
 					"status"=>'active',
 					"permission"=>'client',
-					"clientip"=>$ip
+					"clientip"=>$ip,
+					"keyword"=>$keyword
 				);
 
 				//load MODEL then newClient function

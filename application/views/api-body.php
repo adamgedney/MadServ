@@ -7,6 +7,12 @@
 						<input id="new-client-name" type="text" name="name" placeholder="Full Name or Company"/>
 						<p id="signup-error-name" class="error"></p>
 						
+						<select id="new-client-adtype" name="keyword" value="">
+							<option value="" readonly required>Company Services</option>
+							<option value="Food">Food</option>
+							<option value="Clothes">Clothing</option>
+						</select>
+						
 						<input id="new-client-url" type="text" name="url" placeholder="http://yourwebsite.com"/>
 						<p id="signup-error-url" class="error"></p>
 						

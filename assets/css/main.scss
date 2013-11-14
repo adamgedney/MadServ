@@ -270,6 +270,7 @@ header.logged-in{
 	margin: 4px 0 0;
 	overflow: hidden;
 	height: 54px;
+	width: 535px;
 
 	a{
 		display: block;
@@ -291,7 +292,7 @@ header.logged-in{
 	width: 85px;
 }
 
-.login-form input[type=text], .login-form input[type=password], .signup input[type=text], .signup input[type=password]{
+.login-form input[type=text], .login-form input[type=password], .signup input[type=text], .signup input[type=password], select{
 	font-size: 1.6em;
 	width: 150px;
 	height: 30px;
@@ -358,14 +359,27 @@ header.logged-in{
 	overflow: hidden;
 	float: right;
 
-	input{
+	input, select{
 		display: block;
 		margin-bottom: 12px;
 	}
 
-	input[type=text], input[type=password]{
+	input[type=text], input[type=password], select{
 		width: 300px;
 		height: 45px;
+	}
+
+	select{
+		border: 0;
+		border-radius: none;
+		moz-appearance: none;
+		webkit-appearance: none;
+		appearance: none;
+		border: 1px solid #75758E; 
+		color: $text-gray;
+		padding: 9px;
+		font-family: 'Roboto', "Helvetica Neue Light", Helvetica, Arial, sans-serif;
+		outline: none;
 	}
 
 	.submit-button{
